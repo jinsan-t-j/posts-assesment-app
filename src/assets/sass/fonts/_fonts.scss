@@ -1,0 +1,25 @@
+@layer base {
+    @font-face {
+        font-family: 'montserrat-bold';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(../fonts/montserrat-bold.ttf);
+    }
+
+    @font-face {
+        font-family: 'montserrat-medium';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(../fonts/montserrat-medium.ttf);
+    }
+
+    @font-face {
+        font-family: 'montserrat-regular';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(../fonts/montserrat-regular.ttf);
+    }
+}

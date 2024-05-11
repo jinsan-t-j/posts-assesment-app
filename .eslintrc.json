@@ -1,0 +1,169 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:tailwindcss/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "plugin:jsdoc/recommended-typescript-error",
+        "plugin:sonarjs/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["react", "@typescript-eslint", "prettier", "filename-rules"],
+    "rules": {
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "curly": "error",
+        "no-console": "warn",
+        "eqeqeq": "error",
+        "require-await": "off",
+        "lines-between-class-members": [
+            "error",
+            "always",
+            {
+                "exceptAfterSingleLine": true
+            }
+        ],
+        "max-params": ["warn", 7],
+        "object-shorthand": ["warn", "always"],
+        "max-nested-callbacks": ["error", 3],
+        "no-nested-ternary": "error",
+        "max-lines-per-function": [
+            "error",
+            {
+                "max": 200,
+                "skipBlankLines": true,
+                "skipComments": true
+            }
+        ],
+        "padding-line-between-statements": "off",
+        "no-param-reassign": [
+            "error",
+            {
+                "props": false
+            }
+        ],
+        "import/newline-after-import": "error",
+        "import/order": [
+            "error",
+            {
+                "groups": [["builtin", "external"], "parent", "sibling", "index"],
+                "newlines-between": "always"
+            }
+        ],
+        "react/self-closing-comp": [
+            "error",
+            {
+                "component": true,
+                "html": true
+            }
+        ],
+        "react/boolean-prop-naming": [
+            "error",
+            {
+                "propTypeNames": ["bool", "mutuallyExclusiveTrueProps"]
+            }
+        ],
+        "react/jsx-curly-brace-presence": "error",
+        "react/no-array-index-key": "error",
+        "react/no-danger-with-children": "error",
+        "react/destructuring-assignment": "error",
+        "react/jsx-handler-names": "error",
+        "@typescript-eslint/consistent-type-imports": "error",
+        "@typescript-eslint/consistent-generic-constructors": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/prefer-for-of": "error",
+        "@typescript-eslint/ban-types": "error",
+        "@typescript-eslint/ban-tslint-comment": "error",
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": ["export"],
+                "next": "export"
+            },
+            {
+                "blankLine": "always",
+                "prev": ["const", "let", "var"],
+                "next": "return"
+            },
+            {
+                "blankLine": "always",
+                "prev": ["*"],
+                "next": ["interface", "type"]
+            }
+        ],
+        "jsdoc/require-jsdoc": [
+            "error",
+            {
+                "contexts": ["TSInterfaceDeclaration", "TSMethodSignature", "TSPropertySignature"],
+                "publicOnly": {
+                    "ancestorsOnly": true
+                },
+                "require": {
+                    "ArrowFunctionExpression": true,
+                    "ClassDeclaration": true,
+                    "ClassExpression": true,
+                    "MethodDefinition": true,
+                    "FunctionDeclaration": true,
+                    "FunctionExpression": true
+                }
+            }
+        ],
+        "jsdoc/tag-lines": [
+            "error",
+            "any",
+            {
+                "startLines": 1,
+                "tags": {
+                    "param": {
+                        "lines": "never"
+                    }
+                }
+            }
+        ],
+        "jsdoc/check-indentation": "error",
+        "jsdoc/no-multi-asterisks": "off",
+        "jsdoc/require-property": "error",
+        "jsdoc/require-throws": "error",
+        "jsdoc/require-param": [
+            "error",
+            {
+                "checkDestructuredRoots": false
+            }
+        ],
+        "jsdoc/check-param-names": [
+            "error",
+            {
+                "checkDestructured": false
+            }
+        ],
+        "jsdoc/require-hyphen-before-param-description": "error",
+        "sonarjs/no-duplicate-string": "off"
+    },
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "detect"
+        },
+        "tailwindcss": {
+            "callees": ["twMerge", "createTheme"],
+            "classRegex": "^(class(Name)|theme)?$"
+        }
+    }
+}
