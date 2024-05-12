@@ -12,7 +12,7 @@ import { Footer } from '../footer/Footer'
 export const BaseLayout: FC = () => {
     return (
         <div className='container m-auto'>
-            <main>
+            <main className='flex min-h-screen flex-col justify-between'>
                 <Header />
                 <Outlet />
                 <Footer />
