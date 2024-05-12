@@ -1,37 +1,38 @@
 import { useCallback, useEffect, useState, type FC } from 'react'
 import { Card } from 'flowbite-react'
-import { useParams } from 'react-router-dom'
 
 import { useAppDispatch } from '../../../store'
 import { fetchPostItem } from '../post-action'
 import type { IPost } from '../posts-type'
+
+interface IPostItemProps {
+    postId: number
+}
 
 /**
  * The post item component
  *
  * @returns The JSX.
  */
-export const PostItem: FC = () => {
+export const PostItem: FC<IPostItemProps> = ({ postId }) => {
     const dispatch = useAppDispatch()
 
     const [isLoading, setIsLoading] = useState(false)
     const [post, setPost] = useState<IPost>()
 
-    const { postId } = useParams()
-    const id = postId && parseInt(postId)
-
     const setInitialData = useCallback(async () => {
         setIsLoading(true)
-        if (id) {
-            const postData = await dispatch(fetchPostItem(id))
+        if (postId) {
+            const postData = await dispatch(fetchPostItem(postId))
             setPost(postData)
             setIsLoading(false)
         }
-    }, [id, dispatch])
+    }, [postId, dispatch])
 
     useEffect(() => {
+        console.log('ChildComponent re-rendered due to prop change of post id:', postId)
         setInitialData()
-    }, [postId, setInitialData])
+    }, [postId])
 
     return (
         <div className='m-auto'>

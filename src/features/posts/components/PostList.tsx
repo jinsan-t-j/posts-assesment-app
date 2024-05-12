@@ -5,8 +5,10 @@ import { size } from 'lodash'
 
 import { useAppDispatch, useAppSelector } from '../../../store'
 import { fetchPosts } from '../post-action'
+import type { IPost } from '../posts-type'
 
 import { List } from './List'
+import { PostItem } from './PostItem'
 
 /**
  * The post list component
@@ -23,6 +25,8 @@ export const PostList: FC = () => {
 
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [pageCount, setPageCount] = useState<number>(0)
+
+    const [selectedPostId, setSelectedPostId] = useState<number>()
 
     // Fetch posts from the store.
     const posts = useAppSelector((state) => state.posts)
@@ -65,11 +69,16 @@ export const PostList: FC = () => {
         setItemOffset(newOffset)
     }
 
+    // Callback function to handle item click
+    const handleItemClick = useCallback((post: IPost) => {
+        setSelectedPostId(post.id)
+    }, [])
+
     return (
         <>
             {!isLoading && currentPosts && currentPage && pageCount ? (
                 <>
-                    <List posts={currentPosts} />
+                    <List posts={currentPosts} onItemClick={handleItemClick} />
                     <div className='flex overflow-x-auto sm:justify-center'>
                         <Pagination
                             currentPage={currentPage}
@@ -78,6 +87,7 @@ export const PostList: FC = () => {
                             showIcons
                         />
                     </div>
+                    {selectedPostId && <PostItem postId={selectedPostId} />}
                 </>
             ) : (
                 <div> Data is loading </div>
