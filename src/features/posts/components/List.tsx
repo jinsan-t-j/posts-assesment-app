@@ -2,10 +2,18 @@ import type { FC } from 'react'
 import { Button, Card } from 'flowbite-react'
 
 import type { IPost } from '../posts-type'
+import { RightArrowIcon } from '../../../shared/icons/RightArrowIcon'
 
 interface IListProps {
     posts: IPost[]
     onItemClick: (post: IPost) => void
+}
+
+const cardTheme = {
+    root: {
+        base: 'flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
+        children: 'flex h-full flex-col justify-between gap-4 p-4',
+    },
 }
 
 /**
@@ -15,26 +23,20 @@ interface IListProps {
  */
 export const List: FC<IListProps> = ({ posts, onItemClick }) => {
     return (
-        <div className='grid grid-cols-4 self-center'>
+        <div className='col-span-2 grid grid-cols-3 self-center'>
             {posts?.map((post: IPost) => (
-                <Card className='m-1 h-48 max-w-sm' key={post.id} onClick={() => onItemClick(post)}>
-                    <h5 className='font-medium text-lg tracking-tight text-gray-900'>
+                <Card
+                    className='m-1 max-w-sm md:h-48'
+                    key={post.id}
+                    theme={cardTheme}
+                    onClick={() => onItemClick(post)}
+                >
+                    <h5 className='font-regular text-base tracking-tight text-gray-900'>
                         {`${post.id}. ${post.title}`}
                     </h5>
                     <Button>
                         Read more
-                        <svg
-                            className='-mr-1 ml-2 size-4'
-                            fill='currentColor'
-                            viewBox='0 0 20 20'
-                            xmlns='http://www.w3.org/2000/svg'
-                        >
-                            <path
-                                fillRule='evenodd'
-                                d='M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z'
-                                clipRule='evenodd'
-                            />
-                        </svg>
+                        <RightArrowIcon />
                     </Button>
                 </Card>
             ))}
