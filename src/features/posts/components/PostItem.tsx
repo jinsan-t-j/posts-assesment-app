@@ -35,13 +35,11 @@ export const PostItem: FC<IPostItemProps> = ({ postId }) => {
     }, [postId])
 
     return (
-        <div className='m-auto'>
+        <div className='m-5'>
             {!isLoading && post && (
                 <Card className='max-w-sm'>
-                    <h5 className='font-bold text-2xl tracking-tight text-gray-900 dark:text-white'>
-                        {post.title}
-                    </h5>
-                    <p className='font-normal text-gray-700 dark:text-gray-400'>{post.body}</p>
+                    <h5 className='font-bold text-lg tracking-tight text-gray-900'>{post.title}</h5>
+                    <p className='font-normal text-gray-700'>{post.body}</p>
                 </Card>
             )}
         </div>

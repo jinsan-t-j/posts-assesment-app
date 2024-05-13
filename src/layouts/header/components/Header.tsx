@@ -1,5 +1,6 @@
 import type { FC } from 'react'
-import { Navbar, NavbarBrand } from 'flowbite-react'
+import { Navbar } from 'flowbite-react'
+import { Link } from 'react-router-dom'
 
 /**
  * The header components.
@@ -8,8 +9,12 @@ import { Navbar, NavbarBrand } from 'flowbite-react'
  */
 export const Header: FC = () => {
     return (
-        <Navbar fluid rounded>
-            <NavbarBrand> The Post App </NavbarBrand>
+        <Navbar>
+            <Navbar.Brand as={Link} href='/' className='m-auto'>
+                <span className='self-center whitespace-nowrap text-xl underline tracking-widest font-semibold dark:text-white'>
+                    The Post App
+                </span>
+            </Navbar.Brand>
         </Navbar>
     )
 }

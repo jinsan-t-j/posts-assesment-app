@@ -46,7 +46,7 @@ export const PostList: FC = () => {
     }, [dispatch])
 
     // The posts that should be shown per page.
-    const postPerPage = 8
+    const postPerPage = 6
 
     const currentPosts = useMemo(() => {
         if (size(posts)) {
@@ -77,18 +77,20 @@ export const PostList: FC = () => {
     return (
         <>
             {!isLoading && currentPosts && currentPage && pageCount ? (
-                <>
-                    <List posts={currentPosts} onItemClick={handleItemClick} />
-                    <div className='flex overflow-x-auto sm:justify-center'>
-                        <Pagination
-                            currentPage={currentPage}
-                            totalPages={pageCount}
-                            onPageChange={handleOnPageChange}
-                            showIcons
-                        />
+                <div className='md:flex'>
+                    <div>
+                        <List posts={currentPosts} onItemClick={handleItemClick} />
+                        <div className='flex overflow-x-auto sm:justify-center'>
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={pageCount}
+                                onPageChange={handleOnPageChange}
+                                showIcons
+                            />
+                        </div>
                     </div>
                     {selectedPostId && <PostItem postId={selectedPostId} />}
-                </>
+                </div>
             ) : (
                 <div> Data is loading </div>
             )}
